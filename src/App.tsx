@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import GiftForm from "./components/GiftForm";
 import type { Gift } from "./types/Gift";
 import { saveGifts, loadGifts } from "./utils/storage";
 import GiftBoard from "./components/GiftBoard";
 import { FaGift, FaHeart } from "react-icons/fa";
+import FallingGifts from "./components/FallingGifts";
 
 const App: React.FC = () => {
   const [giftsData, setGiftsData] = useState<Gift[]>([]);
@@ -37,10 +38,13 @@ const App: React.FC = () => {
     );
   };
 
+  const memorizedRain = useMemo(() => <FallingGifts />, []);
+
   return (
-    <div className="min-h-screen">
-      <header className="mb-4 ">
-        <div className="flex items-center justify-center gap-2 bg-purple-400 p-1 rounded-b-full">
+    <div className="min-h-screen flex flex-col">
+      
+      <header className="md:mb-6 mb-2">
+        <div className="flex items-center justify-center gap-2 bg-amber-50 shadow-xl p-1 rounded-b-full">
           <FaGift className="text-red-600 text-2xl" />
           <h1 className="text-black text-2xl font-bold">Giftly</h1>
           <p>-</p>
@@ -50,10 +54,25 @@ const App: React.FC = () => {
           <FaHeart className="text-red-600 text-2xl" />
         </div>
       </header>
-      <main className="grid md:grid-cols-3 md:gap-10 gap-4 mx-2">
+      {memorizedRain}
+      <main className="md:flex-1 grid md:grid-cols-3 md:gap-10 gap-4 mx-2">
         <GiftForm onAdd={addGift} />
-        <GiftBoard gifts={giftsData} onToggleBought={toggleBought} onDelete={deleteGift}/>
+        <GiftBoard
+          gifts={giftsData}
+          onToggleBought={toggleBought}
+          onDelete={deleteGift}
+        />
       </main>
+      <footer className="mt-4 hidden md:block">
+        <div className="bg-amber-50 p-1">
+          <p className="text-center text-gray-800 font-semibold">
+            Feito por Gabriell Rossolon -{" "} 
+            <a href="https://portfolio-2025-cyan-eight.vercel.app" className="text-blue-700 underline" target="_blank">
+              Portfólio
+            </a>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };

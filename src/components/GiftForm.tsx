@@ -34,11 +34,11 @@ const GiftForm: React.FC<GiftFormProps> = ({ onAdd }) => {
     <form
       onSubmit={handleSubmit}
       className="
-        flex flex-col items-center justify-center gap-1 lg:gap-2 bg-purple-400 rounded-xl shadow-xl shadow-black/10 px-4 py-3 w-full
-        sticky top-4 self-start max-h-[calc(100vh-2rem)] overflow-auto z-2
+        flex flex-col items-center justify-center gap-1 lg:gap-2 rounded-xl shadow-xl shadow-black/20 px-4 py-3 w-full
+        sticky top-4 self-start max-h-[calc(100vh-2rem)] overflow-auto z-2 bg-amber-100/30 backdrop-blur
       "
     >
-      <h2 className="flex items-center justify-center gap-2 text-xl font-semibold mb-4">
+      <h2 className="flex items-center justify-center gap-2 text-xl font-semibold mb-4 text-gray-800">
         Adicione um Presente <FaGift className="text-red-600 text-2xl" />
       </h2>
       <input
@@ -47,7 +47,7 @@ const GiftForm: React.FC<GiftFormProps> = ({ onAdd }) => {
         value={name}
         required
         onChange={(e) => setName(e.target.value)}
-        className="border-2 border-black rounded-md px-2 py-1 w-full shadow-md shadow-black/20 bg-purple-500/30"
+        className="border-2 border-gray-800/70 rounded-md px-2 py-1 w-full shadow-md shadow-black/20 text-gray-800"
       />
       <input
         type="text"
@@ -55,13 +55,13 @@ const GiftForm: React.FC<GiftFormProps> = ({ onAdd }) => {
         value={giftTo}
         required
         onChange={(e) => setGiftTo(e.target.value)}
-        className="border-2 border-black rounded-md px-2 py-1 w-full shadow-md shadow-black/20 bg-purple-500/30"
+        className="border-2 border-gray-800/70 rounded-md px-2 py-1 w-full shadow-md shadow-black/20 text-gray-800"
       />
       <select
         value={category}
         required
         onChange={(e) => setCategory(e.target.value as Gift["category"])}
-        className="border-2 border-black rounded-md px-2 py-1 w-full shadow-md shadow-black/20 bg-purple-500/30"
+        className="border-2 border-gray-800/70 rounded-md px-2 py-1 w-full shadow-md shadow-black/20 text-gray-800"
       >
         <option value="Natal">Natal</option>
         <option value="Aniversário">Aniversário</option>
@@ -74,8 +74,8 @@ const GiftForm: React.FC<GiftFormProps> = ({ onAdd }) => {
       </select>
       <button
         type="submit"
-        className="border border-black px-6 py-2 rounded-full mt-2 cursor-pointer font-bold shadow-md shadow-black/70 
-        hover:bg-purple-500/50 transition-colors duration-300"
+        className="border border-gray-800/70 px-6 py-2 rounded-full mt-2 cursor-pointer font-bold shadow-md shadow-black/70 
+        transition-colors duration-300 text-gray-800"
       >
         Adicionar presente
       </button>
